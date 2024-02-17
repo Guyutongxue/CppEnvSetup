@@ -20,7 +20,9 @@
 
 + Visual Studio；这是一款IDE，所在操作系统为Windows，编译器为msvc，编辑器为VS自带编辑器，自动包含各种相关开发工具；目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
 
-+ CLion；**TODO**。
++ CLion；这是一款由JetBrains公司开发的专门用于C和C++开发的跨平台IDE。
+主要通过clangd和clang-format等工具提供代码补全、格式化、调试等功能，并支持多种编译器。
+Clion是一款收费软件，但提供了教育免费版，所以可以使用学校邮箱认证后免费使用正版的Clion。
 
 + MinGW；这是一个工具链，所在操作系统为Windows，编译器为gcc，包含少量相关开发工具；目标操作/系统为Windows，**需要用户自己提供编辑器**。
 
@@ -321,3 +323,49 @@ target("a") -- 可执行文件的名字
 ```
 
 特别地，`includePath`中的第二个字串可能要进行更换，换为你安装Visual Studio的文件夹（如果安装在C盘的默认位置，路径为`C:/Program Files (x86)/Microsoft Visual Studio/版本（例如2022）/Community/VC/Tools/MSVC`）；如果使用MinGW，请换为MinGW本身相应的include文件夹（`你的MinGW安装位置/lib/gcc/mingw什么什么/gcc版本/include/c++`）。
+
+## CLion
+
+### 申请教育免费账号
+
+在[JetBrains官网](https://www.jetbrains.com/community/education/#students_)可以申请教育免费许可证。
+在网页上，选择**For students and teachers**计划即可。然后通过你的学校邮箱申请教育免费许可证。
+所有信息如实填写即可。申请后你的邮箱会收到一条验证用的邮件，通过邮件中的链接认证后即可申请成功。
+
+注意：JetBrains教育免费许可证一次申请只有一年的有效期，过期需要重新申请，但只要保证学生身份，重新申请仍然是免费的。
+
+![JetBrains Edu License](assets/jetbrains_edu_license.png)
+
+### 安装CLion
+
+你可以通过[JetBrains官网](https://www.jetbrains.com/clion/)下载CLion。下载完CLion后根据提示安装即可。
+
+安装完之后启动CLion，根据提示通过软件使用条款等，直到进入以下页面，并选择**Activate CLion**。
+
+![CLion Hello](doc.assets/clion_hello.png)
+
+在下一个界面，选择**Log In to JetBrains Account**，会自动打开浏览器网页进行登录，登录之前申请好教育免费许可证的账户即可。
+
+之后就可以开始使用CLion了。并且CLion自带了较新版本的mingw、gcd、cmake等环境，所以不需要额外安装其他软件即可开始编程。
+
+### 基本使用
+
+进入CLion，如果没有打开项目，你将会看到CLion的开始屏幕，选择**New Project**即可创建项目。
+
+在下一个页面，在左侧栏选择**C++ Exectuable**，然后指定项目存放路径**Location**和C++语言标准**Language standard**。
+项目路径建议不要包含中文字符，以免引起不必要的麻烦。
+C++语言标准选择**c++20**即可。
+
+第一次创建项目之后CLion会让你配置编译环境，由于我们直接使用CLion自带的mingw环境，所以保持配置不变直接确认即可。
+
+![CLion Start](doc.assets/clion_start.png)
+
+![CLion New Project](doc.assets/clion_new_project.png)
+
+成功创建项目之后，就可以看到CLion的编辑界面，然后愉快地开始编程了。
+界面右上角有三个图标：锤子图标代表构建项目，播放图标代表运行项目，虫子图标代表调试项目。
+
+CLion使用CMake来管理项目，所以你可以在CMakeLists.txt中修改相应配置来管理项目。
+
+![CLion Main](doc.assets/clion_main.png)
+
