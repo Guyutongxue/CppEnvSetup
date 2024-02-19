@@ -23,13 +23,11 @@
 + MSVC（Microsoft Visual C++）是微软提供的C和C++编译器，作为Visual Studio集成开发环境的一部分。
 MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Windows操作系统和其他微软技术的紧密集成。
 
-+ GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。
-GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
++ GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
+
 GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
 
-+ Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。
-Clang支持多种平台，包括Linux、macOS和Windows。
-Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
++ Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。Clang支持多种平台，包括Linux、macOS和Windows。Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
 
 
 ## 开发环境介绍
@@ -43,15 +41,17 @@ Clang的目标是提供更快的编译时间、更好的诊断信息（错误和
 CLion是一款收费软件，但提供了教育免费版，所以可以使用学校邮箱认证后免费使用正版的CLion。
 
 + **VSCode**：这是一个由Microsoft公司开发的功能强大的编辑器，自身不提供编译环境和各种开发工具，但可以通过插件等方式，调用其他的编译环境和开发环境。
-将VSCode与GCC、MSVC等编辑器配合，即可打造强大的开发环境。
 
+  将VSCode与GCC、MSVC等编辑器配合，即可打造强大的开发环境。
+  
   > 还有很多其他的编辑器，例如Sublime等，这里就不介绍了。
 
 ### Windows平台开发环境
 
 + **Visual Studio**：这是一款由Microsoft公司开发的IDE，简称**VS**，其C/C++功能只在Windows平台上提供。
-Visual Studio提供了名为**msvc**的编译器，并集成了编辑器环境和各种相关的功能强大的开发工具；
-VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
+  Visual Studio提供了名为**msvc**的编译器，并集成了编辑器环境和各种相关的功能强大的开发工具；
+  VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
+  
     > 虽然VS也支持MacOS系统，但其不支持在MacOS系统上进行C/C++开发，所以我们将其归类到Windows平台开发环境。
 
 ### MacOS平台开发环境
@@ -63,13 +63,14 @@ VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，�
 按照我们的说法，你可以根据你的需要进行任意组合，例如：
 
 + 「Windows」仅使用Visual Studio（开箱即用，功能强大，但较笨重）。
++ 「MacOS」仅使用XCode。
 + 「跨平台」使用CLion，并使用CLion的内置编译环境（开箱即用，功能强大，教育免费）。
 + 「Windows」使用VSCode，并安装VS，从而可以在VSCode上使用msvc（轻量，快速，提供够用的功能）。
 + 「跨平台」使用VSCode+GCC/Clang（轻量，快速）。
 
-## Visual Studio (MSVC)
+## MSVC: Visual Studio
 
-请现在[Visual Studio官网](https://visualstudio.microsoft.com/)下载VS社区版，并在安装时勾选“使用C++的桌面开发”。如果你已经下载了，可以随时在Visual Studio Installer中进行更新（在下面任务栏中搜索即可）。
+请在[Visual Studio官网](https://visualstudio.microsoft.com/)下载VS社区版，并在安装时勾选“使用C++的桌面开发”。如果你已经下载了，可以随时在Visual Studio Installer中进行更新（在下面任务栏中搜索即可）。
 
 > 如果VS的更新非常慢，与正常网速严重不匹配，可以在[download.visualstudio.microsoft.com - dns查询--站长工具 (chinaz.com)](https://tool.chinaz.com/dns/download.visualstudio.microsoft.com)中找到TTL值最小的IP地址，并在`C:\Windows\System32\drivers\etc`中的`hosts`文件（请用管理员模式打开）的最后一行加上`在网站中找到的地址 download.visualstudio.microsoft.com`即可。
 
@@ -109,7 +110,7 @@ Visual Studio是一款强大的IDE，具有复杂工程开发中必备的各种�
 
 > VS中直接按Ctrl+`（即电脑左上角的按键，和波浪线同一按钮）也可以使用命令行。
 
-你可以看[微软的官方文档](https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category)来了解更多的编译器选项，**不过一般情况下不建议直接在命令行使用msvc编译器**。
+你可以看[微软的官方文档](https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category)或通过`cl -help`来了解更多的编译器选项，**不过一般情况下不建议直接在命令行使用msvc编译器**。
 
 ## GCC
 
@@ -121,7 +122,7 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 + 如果你的工作要求使用全开源工具链（<del>或者你痛恨微软作恶太多，包括对msvc编译器不开源</del>），MinGW和gcc都是开源的；
 + ...
 
-目前MinGW本体已经停止维护，应该在它之上的分支MinGW-w64。我们一般下载集成了MinGW-w64的工具链，比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
+目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
 
 - 清华镜像：[https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64)
 - 科大镜像：[https://mirrors.ustc.edu.cn/msys2/distrib](https://link.zhihu.com/?target=https%3A//mirrors.ustc.edu.cn/msys2/distrib/)
@@ -133,7 +134,21 @@ TODO
 
 ## Clang
 
-TODO
+### Windows
+
+#### 通过VS安装
+
+Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Visual Studio Installer选择“修改”）点击“单个组件”，搜索`clang`：
+
+<img src="doc.assets/Visual Studio - clang.png" alt="image-20240219161338702" style="zoom:80%;" />
+
+勾选并安装即可。随后就可以在`VS安装位置\VC\Tools\Llvm\x64\bin`中找到clang编译器。
+
+#### 直接安装
+
+你可以在[Release LLVM 17.0.6 · llvm/llvm-project (github.com)](https://github.com/llvm/llvm-project/releases/tag/llvmorg-17.0.6)（如果无法访问github，可以使用前面hub nuaa cf的镜像）找到`...win64.exe`并进行安装。在`安装路径\bin`中就可以找到相应的编译器。
+
+如果你想在命令行中使用，可以`路径\clang++ 源文件 -std=c++20 -o 可执行文件.exe`，与gcc十分类似。不过我们还是建议你使用VSCode等编辑器来配合Clang编译器。你可能需要在环境变量中加入该路径（在任务栏搜索“编辑系统环境变量”，点击下方“环境变量”，在用户变量或系统变量的`Path`变量处添加上该路径即可），以使得CMake等构建工具更方便地查找到LLVM的工具链。
 
 ## VSCode
 
