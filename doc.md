@@ -27,7 +27,11 @@ MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Window
 
   GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
 
+  我们将会使用到GCC工具链中的g++命令来编译c++文件（相应的，gcc命令用于编译c文件）。
+
 + Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。Clang支持多种平台，包括Linux、macOS和Windows。Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
+
+  我们将会使用clang++命令来编译c++文件。
 
 
 ## 开发环境介绍
@@ -134,9 +138,38 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 
 请记住这个位置，在之后的vscode的配置过程中，你可能会用到这个路径。
 
-### MacOS: Homebrew
+## MacOS: homebrew
 
-TODO
+如果你已经使用`xcode-select`安装过开发工具包，那么你可能会发现你可以在命令行中运行`gcc`命令。
+但是，这并是不是真正的gcc，这只是Apple给它的Apple Clang编译器加的一个别名。
+想要使用真正的GCC工具链，你可以通过[homebrew](https://brew.sh/)来安装。
+
+安装homebrew，只需要在终端中运行以下命令：
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+安装完homebrew之后，使用以下命令来安装最新版本的GCC编译器：
+```bash
+brew install gcc
+```
+
+截止2024年2月，gcc的最新版本为13，所以你可以通过`gcc-13`来调用gcc编译器。
+
+你也可以将`gcc`修改成`gcc-13`的别名，以方便使用：
+- 如果你的Mac电脑是使用M系列的arm芯片（较新的Mac电脑）
+```bash
+cd /opt/homebrew/bin
+ln -s g++-13 g++
+ln -s gcc-13 gcc
+```
+
+- 如果你的Mac电脑是使用较老的Intel芯片
+```bash
+cd /usr/local/bin
+ln -s g++-13 g++
+ln -s gcc-13 gcc
+```
 
 ## Clang
 
@@ -155,6 +188,16 @@ Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Vis
 你可以在[Release LLVM 17.0.6 · llvm/llvm-project (github.com)](https://github.com/llvm/llvm-project/releases/tag/llvmorg-17.0.6)（如果无法访问github，可以使用前面hub nuaa cf的镜像）找到`...win64.exe`并进行安装。在`安装路径\bin`中就可以找到相应的编译器。
 
 如果你想在命令行中使用，可以`路径\clang++ 源文件 -std=c++20 -o 可执行文件.exe`，与gcc十分类似。不过我们还是建议你使用VSCode等编辑器来配合Clang编译器。你可能需要在环境变量中加入该路径（在任务栏搜索“编辑系统环境变量”，点击下方“环境变量”，在用户变量或系统变量的`Path`变量处添加上该路径即可），以使得CMake等构建工具更方便地查找到LLVM的工具链。
+
+### MacOS: xcode-select
+
+Apple官方提供了一个名为`xcode-select`的工具来安装clang编译器等开发工具，你只需要在你的mac电脑中打开终端，运行以下命令，然后根据提示就可以安装。
+
+```
+xcode-select --install
+```
+
+但值得注意的是，这种方法安装的是**Apple Clang**，是Apple公司从原版Clang修改而成，其特性与原版Clang有一些区别。对于C++标准的支持，Apple Clang不如原版的Clang。
 
 ## VSCode
 
