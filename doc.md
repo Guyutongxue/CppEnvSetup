@@ -183,7 +183,7 @@ Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Vis
 
 ### CMake
 
-我们建议安装CMake和CMake Tools两个插件，并同时安装CMake本身。如果你已经安装了Visual Studio，它在`VS路径\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin`中就已经安装了CMake软件（不过微软可能进行了一些改造）；除此之外，你也可以自己在[CMake官网]([Download CMake](https://cmake.org/download/))安装标准的CMake，在相应的路径就可以找到。
+我们建议安装CMake和CMake Tools两个插件，并同时安装CMake本身。如果你已经安装了Visual Studio，它在`VS路径\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin`中就已经安装了CMake软件（不过微软可能进行了一些改造）；除此之外，你也可以自己在[CMake官网](https://cmake.org/download/)安装标准的CMake，在相应的路径就可以找到。
 
 随后，你有两种选择：
 
@@ -250,6 +250,8 @@ target("a") -- 可执行文件的名字
 > 第一次在空文件夹下创建`xmake.lua`时，如果没有自动生成`compile_commands.json`，可以重启VSCode再保存。
 >
 > 若重新保存未重新生成，可以清空`compile_commands.json`后重试。如果仍未成功，可以添加`add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})`。
+>
+> 如果cpptools还提示有系统头文件找不到的问题，可以把标准库路径也加入到`compile_commands.json`的`includePath`中，例如MSVC就写`VS安装位置\\VC\\Tools\\MSVC\\**`；等等。
 
 ### 无构建工具（Microsoft C/C++ 插件）
 
