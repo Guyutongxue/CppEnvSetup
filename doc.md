@@ -4,35 +4,34 @@
 
 程序员的开发环境一般分为以下部分：
 
-+ **所在操作系统**：就是你的电脑当前是什么操作系统，例如Windows11，Ubuntu23.04（Linux的一种发行版）等。
+- **所在操作系统**：就是你的电脑当前是什么操作系统，例如Windows11，Ubuntu23.04（Linux的一种发行版）等。
 
-+ **目标操作系统**：就是开发的程序将要在什么操作系统上运行，最简单的就是在什么操作系统上生成，就在什么操作系统上执行，在计算概论中大家就是这样的，本课程不会涉及到跨操作系统和跨平台架构的开发和编译。
+- **目标操作系统**：就是开发的程序将要在什么操作系统上运行，最简单的就是在什么操作系统上生成，就在什么操作系统上执行，在计算概论中大家就是这样的，本课程不会涉及到跨操作系统和跨平台架构的开发和编译。
 
-+ **编译器**：能够将源代码在所在操作系统编译为目标操作系统上的可执行程序的软件。
+- **编译器**：能够将源代码在所在操作系统编译为目标操作系统上的可执行程序的软件。
 
   > 同时，为了更方便地指定哪些代码以哪些选项生成哪些可执行程序，在较大型的工程中，程序员会使用“构建工具”（Build tools）来辅助这一过程；CMake、XMake等就是这一工具。
 
-+ **编辑器**：能够方便地把各种代码文件组织起来，提供一定的编辑功能，并允许通过**插件**进行扩展的软件。
+- **编辑器**：能够方便地把各种代码文件组织起来，提供一定的编辑功能，并允许通过**插件**进行扩展的软件。
 
-+ **各种相关开发工具**，包括性能探测器、调试器（debugger）、格式化工具（formatter）等等。
+- **各种相关开发工具**，包括性能探测器、调试器（debugger）、格式化工具（formatter）等等。
 
 一个IDE（Integrated development environment，集成开发环境）集合了除目标操作系统外的所有软件，并允许插件扩展，适合大型工程的开发和新手的入门。除此之外，我们也可以逐个组装，获得自己想要的环境。
 
 ## 主流编译器介绍
 
-+ MSVC（Microsoft Visual C++）是微软提供的C和C++编译器，作为Visual Studio集成开发环境的一部分。
-MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Windows操作系统和其他微软技术的紧密集成。
+- MSVC（Microsoft Visual C++）是微软提供的C和C++编译器，作为Visual Studio集成开发环境的一部分。
+  MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Windows操作系统和其他微软技术的紧密集成。
 
-+ GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
+- GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
 
   GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
 
   我们将会使用到GCC工具链中的g++命令来编译c++文件（相应的，gcc命令用于编译c文件）。
 
-+ Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。Clang支持多种平台，包括Linux、macOS和Windows。Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
+- Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。Clang支持多种平台，包括Linux、macOS和Windows。Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
 
   我们将会使用clang++命令来编译c++文件。
-
 
 ## 开发环境介绍
 
@@ -40,37 +39,37 @@ MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Window
 
 跨平台开发环境，即适配了多个操作系统的开发环境，比如可以同时支持Windows平台和MacOS平台。
 
-+ **CLion**：这是一款由JetBrains公司开发的专门用于C和C++开发的跨平台IDE。
-主要通过clangd和clang-format等工具提供代码补全、格式化、调试等功能，并支持多种编译器（在Windows平台上内置了MinGW编译环境和gdb调试工具）。
-CLion是一款收费软件，但提供了教育免费版，所以可以使用学校邮箱认证后免费使用正版的CLion。
+- **CLion**：这是一款由JetBrains公司开发的专门用于C和C++开发的跨平台IDE。
+  主要通过clangd和clang-format等工具提供代码补全、格式化、调试等功能，并支持多种编译器（在Windows平台上内置了MinGW编译环境和gdb调试工具）。
+  CLion是一款收费软件，但提供了教育免费版，所以可以使用学校邮箱认证后免费使用正版的CLion。
 
-+ **VSCode**：这是一个由Microsoft公司开发的功能强大的编辑器，自身不提供编译环境和各种开发工具，但可以通过插件等方式，调用其他的编译环境和开发环境。
+- **VSCode**：这是一个由Microsoft公司开发的功能强大的编辑器，自身不提供编译环境和各种开发工具，但可以通过插件等方式，调用其他的编译环境和开发环境。
 
   将VSCode与GCC、MSVC等编辑器配合，即可打造强大的开发环境。
-  
+
   > 还有很多其他的编辑器，例如Sublime等，这里就不介绍了。
 
 ### Windows平台开发环境
 
-+ **Visual Studio**：这是一款由Microsoft公司开发的IDE，简称**VS**，其C/C++功能只在Windows平台上提供。
+- **Visual Studio**：这是一款由Microsoft公司开发的IDE，简称**VS**，其C/C++功能只在Windows平台上提供。
   Visual Studio提供了名为**msvc**的编译器，并集成了编辑器环境和各种相关的功能强大的开发工具；
   VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
-  
-    > 虽然VS也支持MacOS系统，但其不支持在MacOS系统上进行C/C++开发，所以我们将其归类到Windows平台开发环境。
+
+  > 虽然VS也支持MacOS系统，但其不支持在MacOS系统上进行C/C++开发，所以我们将其归类到Windows平台开发环境。
 
 ### MacOS平台开发环境
 
-+ **XCode**：TODO
+- **XCode**：TODO
 
 ### 如何选择开发环境？
 
 按照我们的说法，你可以根据你的需要进行任意组合，例如：
 
-+ 「Windows」仅使用Visual Studio（开箱即用，功能强大，但较笨重）。
-+ 「MacOS」仅使用XCode。
-+ 「跨平台」使用CLion，并使用CLion的内置编译环境（开箱即用，功能强大，教育免费）。
-+ 「Windows」使用VSCode，并安装VS，从而可以在VSCode上使用msvc（轻量，快速，提供够用的功能）。
-+ 「跨平台」使用VSCode+GCC/Clang（轻量，快速）。
+- 「Windows」仅使用Visual Studio（开箱即用，功能强大，但较笨重）。
+- 「MacOS」仅使用XCode。
+- 「跨平台」使用CLion，并使用CLion的内置编译环境（开箱即用，功能强大，教育免费）。
+- 「Windows」使用VSCode，并安装VS，从而可以在VSCode上使用msvc（轻量，快速，提供够用的功能）。
+- 「跨平台」使用VSCode+GCC/Clang（轻量，快速）。
 
 ## MSVC: Visual Studio
 
@@ -122,9 +121,9 @@ Visual Studio是一款强大的IDE，具有复杂工程开发中必备的各种�
 
 MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。虽然一般情况下推荐使用微软自己的工具链，但是它确实存在一些问题：
 
-+ 如果你写的一些代码不符合C++标准，例如出现了仅gcc编译器支持的“方言”，那么在Windows上使用msvc编译器和在Linux上使用g++编译器可能导致不同的行为（甚至换用编译器可能编译不过）；
-+ 如果你的工作要求使用全开源工具链（<del>或者你痛恨微软作恶太多，包括对msvc编译器不开源</del>），MinGW和gcc都是开源的；
-+ ...
+- 如果你写的一些代码不符合C++标准，例如出现了仅gcc编译器支持的“方言”，那么在Windows上使用msvc编译器和在Linux上使用g++编译器可能导致不同的行为（甚至换用编译器可能编译不过）；
+- 如果你的工作要求使用全开源工具链（<del>或者你痛恨微软作恶太多，包括对msvc编译器不开源</del>），MinGW和gcc都是开源的；
+- ...
 
 目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。
 特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
@@ -145,11 +144,13 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 想要使用真正的GCC工具链，你可以通过[homebrew](https://brew.sh/)来安装。
 
 安装homebrew，只需要在终端中运行以下命令：
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 安装完homebrew之后，使用以下命令来安装最新版本的GCC编译器：
+
 ```bash
 brew install gcc
 ```
@@ -157,7 +158,9 @@ brew install gcc
 截止2024年2月，gcc的最新版本为13，所以你可以通过`gcc-13`来调用gcc编译器。
 
 你也可以将`gcc`修改成`gcc-13`的别名，以方便使用：
+
 - 如果你的Mac电脑是使用M系列的arm芯片（较新的Mac电脑）
+
 ```bash
 cd /opt/homebrew/bin
 ln -s g++-13 g++
@@ -165,6 +168,7 @@ ln -s gcc-13 gcc
 ```
 
 - 如果你的Mac电脑是使用较老的Intel芯片
+
 ```bash
 cd /usr/local/bin
 ln -s g++-13 g++
@@ -211,16 +215,16 @@ xcode-select --install
 
 2. clangd + codelldb：
 
-    clangd是LLVM项目团队开发的跨编辑器的提供C/C++的代码提示、实时代码分析等功能的软件，其运行速度**远快于**由Microsoft开发的C/C++ Extension(下称cpptools)。但clangd不提供调试功能，所以调试功能需要使用其他插件实现。
+   clangd是LLVM项目团队开发的跨编辑器的提供C/C++的代码提示、实时代码分析等功能的软件，其运行速度**远快于**由Microsoft开发的C/C++ Extension(下称cpptools)。但clangd不提供调试功能，所以调试功能需要使用其他插件实现。
 
-    可以使用cpptools并关闭其智能提示功能来让其单纯作为调试工具；也可以使用codelldb插件。
-    lldb是LLVM项目中的调试器，与gdb的特性有区别。在vscode中，codelldb提供的特性比cpptools更加方便，因此推荐使用codelldb。
+   可以使用cpptools并关闭其智能提示功能来让其单纯作为调试工具；也可以使用codelldb插件。
+   lldb是LLVM项目中的调试器，与gdb的特性有区别。在vscode中，codelldb提供的特性比cpptools更加方便，因此推荐使用codelldb。
 
-    直接在vscode商店中下载这两个插件即可使用。安装好之后插件会自动下载所需要的二进制包，期间可能会遇到网络问题，可以通过使用网络代理等方式解决。
+   直接在vscode商店中下载这两个插件即可使用。安装好之后插件会自动下载所需要的二进制包，期间可能会遇到网络问题，可以通过使用网络代理等方式解决。
 
-    ![Clangd Plugin](doc.assets/clangd_plugin.png)
+   ![Clangd Plugin](doc.assets/clangd_plugin.png)
 
-    ![CodeLLDB Plugin](doc.assets/codelldb_plugin.png)
+   ![CodeLLDB Plugin](doc.assets/codelldb_plugin.png)
 
 同时：我们比较建议使用CMake或者XMake这种构建工具来组织代码，进行各种配置比较方便。如果你想使用无构建工具辅助的组织形式，我们也在最后给了一个例子。
 
@@ -236,11 +240,11 @@ xcode-select --install
 
 随后，你有两种选择：
 
-+ 在环境变量中加入该路径（在任务栏搜索“编辑系统环境变量”，点击下方“环境变量”，在用户变量或系统变量的`Path`变量处添加上CMake路径即可）。这样，你在命令行中也可以直接使用CMake。
+- 在环境变量中加入该路径（在任务栏搜索“编辑系统环境变量”，点击下方“环境变量”，在用户变量或系统变量的`Path`变量处添加上CMake路径即可）。这样，你在命令行中也可以直接使用CMake。
 
   > 请关闭VSCode，随后重新打开以使新的环境变量在VSCode中生效。
 
-+ 改变cmake-tools插件中的设置（插件右下角的齿轮），把CMake path（搜索path就能找到）改为该路径。
+- 改变cmake-tools插件中的设置（插件右下角的齿轮），把CMake path（搜索path就能找到）改为该路径。
 
 然后在文件夹中创建`CMakeLists.txt`，如下：
 
@@ -254,8 +258,8 @@ add_executable(a a.cpp) # a是可执行文件的名字，a.cpp是用于构建的
 
 此外，应当把cmake-tools插件中的设置中的“status bar visibility"改为"compact"，这时下方的状态栏就会出现CMake相关的图标，点击"Kit"的选项选择工具链；如果你已经安装了Visual Studio，选择`-amd64`那个即可使用`msvc`；如果你想使用MinGW，请选择MinGW的那个选项。
 
-> + 在以前的版本中，使用VS的toolkit可能需要使用管理员模式启动VSCode来成功构建；助教在最新版的VSCode和VS2022中未发现此问题。
-> + MinGW可能不支持非ascii码路径（即不支持中文路径）。
+> - 在以前的版本中，使用VS的toolkit可能需要使用管理员模式启动VSCode来成功构建；助教在最新版的VSCode和VS2022中未发现此问题。
+> - MinGW可能不支持非ascii码路径（即不支持中文路径）。
 
 随后就可以点击齿轮进行编译，点击`▶`符号进行运行，虫子的符号进行debug。你可以把`Debug`换为`Release`得到优化版本。如果你需要更多的可执行程序，就再加其他的`add_executable`即可。
 
@@ -279,20 +283,20 @@ target("a") -- 可执行文件的名字
 然后保存，就会在`.vscode`下自动生成`compile_commands.json`文件。这个文件生成与否不会影响构建，只会影响代码补全等功能。在下面任务栏就可以选择构建选项，`release`可以换为`debug`，`toolchain`可以换为mingw（Windows在装了VS的情况下默认为msvc），其余符号与CMake插件一致。
 
 随后，为了能让代码补全正确发挥作用，你需要调整一些插件的设置。
+
 - 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
-    
-    ![Cpptools Config](doc.assets/cpptools_config.png)
 
-    然后调整其中的**C++标准**到**c++20**，和高级设置中的**配置命令**到`.vscode/compile_commands.json`。
+  ![Cpptools Config](doc.assets/cpptools_config.png)
 
-    ![Cpptools Config Cpp Standard](doc.assets/cpptools_config_cppstd.png)
+  然后调整其中的**C++标准**到**c++20**，和高级设置中的**配置命令**到`.vscode/compile_commands.json`。
 
-    ![Cpptools Config Compile Commands](doc.assets/cpptools_config_compilecmd.png)
+  ![Cpptools Config Cpp Standard](doc.assets/cpptools_config_cppstd.png)
 
+  ![Cpptools Config Compile Commands](doc.assets/cpptools_config_compilecmd.png)
 
 - 如果你使用的是clangd插件，那么你需要在vscode的设置中搜索clangd，并在Arguments选项中添加`--compile-commands-dir=.vscode`。
 
-    ![Clangd Vscode Setting](doc.assets/clangd_vscode_argument.png)
+  ![Clangd Vscode Setting](doc.assets/clangd_vscode_argument.png)
 
 之后，就可以正常进行代码提示了。每次保存`xmake.lua`都会自动重新生成`compile_commands.json`，代码的某些提示也可以相应改变。
 
@@ -309,154 +313,155 @@ target("a") -- 可执行文件的名字
 
 - 「Windows」如果使用MSVC编译器（不推荐），则在.vscode文件夹中新建tasks.json中填写以下内容：
 
-    > 这本质上就是在指定命令行参数，因此你需要在x64 native terminal（参见前文Visual Studio安装流程）中`cd 工作目录`，再用`code .`来用VSCode打开文件夹，来使msvc正常工作。
-    >
-    > 每次使用vscode都需要这样打开，过于麻烦，这是不推荐在vscode中配合msvc使用的原因。
+  > 这本质上就是在指定命令行参数，因此你需要在x64 native terminal（参见前文Visual Studio安装流程）中`cd 工作目录`，再用`code .`来用VSCode打开文件夹，来使msvc正常工作。
+  >
+  > 每次使用vscode都需要这样打开，过于麻烦，这是不推荐在vscode中配合msvc使用的原因。
 
-    ```json
-    {
-        "version": "2.0.0",
-        "tasks": [
-            {
-                "label": "create build dir",
-                "type": "shell",
-                "command": "cmd",
-                "args": ["/C", "if not exist .\\build mkdir .\\build"]
-            },
-            {
-                "type": "shell",
-                "label": "C/C++: cl.exe build active file",
-                "command": "cl.exe",
-                "args": [
-                    "/std:c++20",
-                    "/Zi",
-                    "/EHsc",
-                    "/Fe:",
-                    "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
-                    "/Fo:",
-                    "${fileDirname}\\build\\${fileBasenameNoExtension}.obj",
-                    "/Fd:",
-                    "${fileDirname}\\build\\${fileBasenameNoExtension}.pdb",
-                    "${file}"
-                ],
-                "problemMatcher": ["$msCompile"],
-                "group": {
-                    "kind": "build",
-                    "isDefault": true
-                },
-                "dependsOn": ["create build dir"]
-            }
-        ]
-    }
-    ```
+  ```json
+  {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "create build dir",
+        "type": "shell",
+        "command": "cmd",
+        "args": ["/C", "if not exist .\\build mkdir .\\build"]
+      },
+      {
+        "type": "shell",
+        "label": "C/C++: cl.exe build active file",
+        "command": "cl.exe",
+        "args": [
+          "/std:c++20",
+          "/Zi",
+          "/EHsc",
+          "/Fe:",
+          "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+          "/Fo:",
+          "${fileDirname}\\build\\${fileBasenameNoExtension}.obj",
+          "/Fd:",
+          "${fileDirname}\\build\\${fileBasenameNoExtension}.pdb",
+          "${file}"
+        ],
+        "problemMatcher": ["$msCompile"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "dependsOn": ["create build dir"]
+      }
+    ]
+  }
+  ```
 
-    然后在.vscode文件夹中创建launch.json文件并加入以下内容
-    ```json
-    {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "name": "C/C++: cl.exe generate and debug active file",
-                // type 告诉vscode编译器任务的类型
-                // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
-                "type": "cppvsdbg",
-                "request": "launch",//有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
-                // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
-                // 程序的位置自定义修改，等会参照后面的tasks.json内容
-                //程序所在路径和程序名
-                "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
-                //这里填命令行参数（main函数的形参）
-                "args": [],
-                //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
-                "stopAtEntry": false,
-                //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
-                "cwd": "${fileDirname}",
-                //临时手动添加环境变量；
-                "environment": [],
-                //如果需要输入东西，最好修改为true使用外部控制台（在运行时额外打开终端）。否则用vscode内置的控制台不能输入东西（不是内联控制台，内联控制台和外部控制台其实是一样的，但是这里调试的时候没有内联控制台这个选项）
-                "externalConsole": false, 
-                //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
-                "preLaunchTask": "C/C++: cl.exe build active file"
-            }
-        ]
-    }
-    ```
+  然后在.vscode文件夹中创建launch.json文件并加入以下内容
 
+  ```json
+  {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C/C++: cl.exe generate and debug active file",
+        // type 告诉vscode编译器任务的类型
+        // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
+        "type": "cppvsdbg",
+        "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
+        // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
+        // 程序的位置自定义修改，等会参照后面的tasks.json内容
+        //程序所在路径和程序名
+        "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+        //这里填命令行参数（main函数的形参）
+        "args": [],
+        //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
+        "stopAtEntry": false,
+        //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
+        "cwd": "${fileDirname}",
+        //临时手动添加环境变量；
+        "environment": [],
+        //如果需要输入东西，最好修改为true使用外部控制台（在运行时额外打开终端）。否则用vscode内置的控制台不能输入东西（不是内联控制台，内联控制台和外部控制台其实是一样的，但是这里调试的时候没有内联控制台这个选项）
+        "externalConsole": false,
+        //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
+        "preLaunchTask": "C/C++: cl.exe build active file"
+      }
+    ]
+  }
+  ```
 
 - 「跨平台」如果你使用GCC/Clang，可以在.vscode文件夹中添加tasks.json文件并添加以下内容，然后根据需要修改其中的command路径：
 
-    ```json
-    {
-        "version": "2.0.0",
-        "tasks": [
-            {
-                "label": "create build dir",
-                "type": "shell",
-                "command": "mkdir -p ./build",
-                "windows": {
-                  "command": "cmd",
-                  "args": ["/C", "if not exist .\\build mkdir .\\build"]
-                }
-            },
-            {
-                "type": "shell",
-                "label": "C/C++: c++ build active file",
-                // 你的g++或clang++路径
-                // 如果你使用的是由MSYS2安装的GCC，那么路径可能是C:\msys64\ucrt64\bin\g++.exe
-                "command": "g++",
-                "args": [
-                    "-fdiagnostics-color=always",
-                    "-Wall",
-                    "-std=c++20",
-                    "-o",
-                    "${fileDirname}/build/${fileBasenameNoExtension}",
-                    "${file}"
-                ],
-                "problemMatcher": ["$gcc"],
-                "group": {
-                    "kind": "build",
-                    "isDefault": true
-                },
-                "dependsOn": ["create build dir"]
-            }
-        ]
-    }
-    ```
+  ```json
+  {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "create build dir",
+        "type": "shell",
+        "command": "mkdir -p ./build",
+        "windows": {
+          "command": "cmd",
+          "args": ["/C", "if not exist .\\build mkdir .\\build"]
+        }
+      },
+      {
+        "type": "shell",
+        "label": "C/C++: c++ build active file",
+        // 你的g++或clang++路径
+        // 如果你使用的是由MSYS2安装的GCC，那么路径可能是C:\msys64\ucrt64\bin\g++.exe
+        "command": "g++",
+        "args": [
+          "-fdiagnostics-color=always",
+          "-Wall",
+          "-std=c++20",
+          "-o",
+          "${fileDirname}/build/${fileBasenameNoExtension}",
+          "${file}"
+        ],
+        "problemMatcher": ["$gcc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "dependsOn": ["create build dir"]
+      }
+    ]
+  }
+  ```
 
-    然后在.vscode文件夹中创建launch.json并添加以下内容：
-    ```json
-    {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "name": "C/C++: c++ generate and debug active file",
-                // type 告诉vscode编译器任务的类型，这里是cppdgb，不能随意修改
-                "type": "cppdbg",
-                "request": "launch",//有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
-                // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
-                // 程序的位置自定义修改
-                "program": "${fileDirname}/build/${fileBasenameNoExtension}",
-                "windows": {
-                    "program": "${fileDirname}/build/${fileBasenameNoExtension}.exe"
-                },
-                //这里填命令行参数（main函数的形参）
-                "args": [],
-                //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
-                "stopAtEntry": false,
-                //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
-                "cwd": "${fileDirname}",
-                //是否在外部控制台运行程序。如果为false，则使用vscode的控制台运行程序。
-                "externalConsole": false, 
-                //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
-                "preLaunchTask": "C/C++: c++ build active file"
-            }
-        ]
-    }
-    ```
+  然后在.vscode文件夹中创建launch.json并添加以下内容：
+
+  ```json
+  {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C/C++: c++ generate and debug active file",
+        // type 告诉vscode编译器任务的类型，这里是cppdgb，不能随意修改
+        "type": "cppdbg",
+        "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
+        // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
+        // 程序的位置自定义修改
+        "program": "${fileDirname}/build/${fileBasenameNoExtension}",
+        "windows": {
+          "program": "${fileDirname}/build/${fileBasenameNoExtension}.exe"
+        },
+        //这里填命令行参数（main函数的形参）
+        "args": [],
+        //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
+        "stopAtEntry": false,
+        //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
+        "cwd": "${fileDirname}",
+        //是否在外部控制台运行程序。如果为false，则使用vscode的控制台运行程序。
+        "externalConsole": false,
+        //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
+        "preLaunchTask": "C/C++: c++ build active file"
+      }
+    ]
+  }
+  ```
 
 最后，需要配置Microsoft C/C++ Extension使其支持c++20：
 使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
-    
+
 ![Cpptools Config](doc.assets/cpptools_config.png)
 
 然后调整其中的**C++标准**到**c++20**。
@@ -468,6 +473,7 @@ target("a") -- 可执行文件的名字
 由于codelldb并不支持调试由mvsc构建的二进制文件，所以以下仅包含使用gcc/clang的示例。
 
 新建.vscode/tasks.json文件并加入以下内容（对GCC和Clang通用）：
+
 ```json
 {
   "version": "2.0.0",
@@ -525,6 +531,7 @@ target("a") -- 可执行文件的名字
 ```
 
 在.vscode/launch.json中添加：
+
 ```json
 {
   "version": "0.2.0",
@@ -591,4 +598,3 @@ C++语言标准选择**c++20**即可。
 CLion使用CMake来管理项目，所以你可以在CMakeLists.txt中修改相应配置来管理项目。
 
 ![CLion Main](doc.assets/clion_main.png)
-
