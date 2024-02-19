@@ -25,7 +25,7 @@ MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Window
 
 + GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
 
-GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
+  GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
 
 + Clang是一个基于LLVM的轻量级、高性能的C、C++和Objective-C编译器。Clang支持多种平台，包括Linux、macOS和Windows。Clang的目标是提供更快的编译时间、更好的诊断信息（错误和警告消息）以及与GCC和MSVC的兼容性。
 
@@ -231,7 +231,7 @@ target("a") -- 可执行文件的名字
 
 随后，为了能让代码补全正确发挥作用，你需要调整一些插件的设置。
 - 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++配置`。
-    
+  
     ![Cpptools Config](doc.assets/cpptools_config.png)
 
     然后调整其中的**C++标准**到**c++20**，和高级设置中的**配置命令**到`.vscode/compile_commands.json`。
