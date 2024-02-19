@@ -124,9 +124,9 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 
 目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
 
-- 清华镜像：[https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64)
-- 科大镜像：[https://mirrors.ustc.edu.cn/msys2/distrib](https://link.zhihu.com/?target=https%3A//mirrors.ustc.edu.cn/msys2/distrib/)
-- github镜像：https://hub.nuaa.cf/msys2/msys2-installer/releases
+- 清华镜像：[https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64)
+- 科大镜像：[https://mirrors.ustc.edu.cn/msys2/distrib](https://mirrors.ustc.edu.cn/msys2/distrib/)
+- github镜像：[https://hub.nuaa.cf/msys2/msys2-installer/releases](https://hub.nuaa.cf/msys2/msys2-installer/releases)
 
 ### MacOS: Homebrew
 
@@ -152,11 +152,13 @@ Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Vis
 
 ## VSCode
 
-这是一款纯编辑器，首先在[VS Code官网](https://code.visualstudio.com/)下载VS Code，并需要安装下面的插件之一来提供一定的开发工具：
+注意：在开始配置VSCode之前，你需要先参照前面的章节，先安装MSVC、GCC、Clang之中的任意一个编译器。
 
-1. Microsoft C/C++ Extension：
+这是一款纯编辑器，首先在[VS Code官网](https://code.visualstudio.com/)下载VS Code，并需要安装下面的插件之一来提供一定的开发工具（代码提示等）：
 
-   <img src="doc.assets/windows-5.png" alt="image-20240210191430006" style="zoom:80%;" />
+1. Microsoft C/C++ Extension (cpptools)：
+
+   <img src="doc.assets/windows-5.png" alt="Microsoft C/C++ Extension" style="zoom:80%;" />
 
 2. clangd + codelldb：
 
@@ -171,7 +173,7 @@ Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Vis
 
     ![CodeLLDB Plugin](doc.assets/codelldb_plugin.png)
 
-我们比较建议使用CMake或者XMake这种构建工具来组织代码，进行各种配置比较方便。如果你想使用无构建工具辅助的组织形式，我们也在最后给了一个例子。
+同时：我们比较建议使用CMake或者XMake这种构建工具来组织代码，进行各种配置比较方便。如果你想使用无构建工具辅助的组织形式，我们也在最后给了一个例子。
 
 用VSCode打开一个文件夹后，会出现如下的提示：
 
@@ -194,7 +196,7 @@ Visual Studio允许以组件形式集成LLVM Clang，在安装时（或者从Vis
 然后在文件夹中创建`CMakeLists.txt`，如下：
 
 ```cmake
-cmake_minimum_required(VERSION 3.28) # cmake最小版本
+cmake_minimum_required(VERSION 3.10) # 该项目所需的cmake最小版本
 project(demo) # 项目名称
 
 set(CMAKE_CXX_STANDARD 20) # 设置C++版本，至少是20。
@@ -210,9 +212,9 @@ add_executable(a a.cpp) # a是可执行文件的名字，a.cpp是用于构建的
 
 ### XMake
 
-XMake是由中国工程师开发的开源构建工具，使用lua语言编写脚本（相比于CMakeLists可读性更高些），并集成了包管理工具xrepo，解决了很多CMake本身的痛点问题。不过它目前的普适程度还比不上CMake（虽然可以自动生成CMakeLists），所以仅供有兴趣的同学使用。
+XMake是由中国工程师开发的开源构建工具，使用lua语言编写脚本（相比于CMakeLists可读性更高些），并集成了包管理工具xrepo，解决了很多CMake本身的痛点问题。不过它目前的普适程度和功能完善程度还比不上CMake（虽然可以自动生成CMakeLists），所以仅供有兴趣的同学使用。
 
-如果你想使用XMake，你可以安装插件XMake，并安装XMake本身（详见[安装 - xmake](https://xmake.io/#/zh-cn/guide/installation)）。在Windows中用Installer安装时注意勾选”添加到环境变量PATH“中。
+如果你想使用XMake，你可以安装插件XMake，并安装XMake本身（详见[安装 - xmake](https://xmake.io/#/zh-cn/guide/installation)）。在Windows中用Installer安装时**注意勾选”添加到环境变量PATH“中**。
 
 随后编写`xmake.lua`：
 
@@ -227,35 +229,21 @@ target("a") -- 可执行文件的名字
 
 然后保存，就会在`.vscode`下自动生成`compile_commands.json`文件。这个文件生成与否不会影响构建，只会影响代码补全等功能。在下面任务栏就可以选择构建选项，`release`可以换为`debug`，`toolchain`可以换为mingw（Windows在装了VS的情况下默认为msvc），其余符号与CMake插件一致。
 
-随后，为了能让代码补全正确发挥作用，如果你使用的是Microsoft C/C++，需要在`.vscode`中编写`c_cpp_properties.json`，如下：
+随后，为了能让代码补全正确发挥作用，你需要调整一些插件的设置。
+- 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++配置`。
+    
+    ![Cpptools Config](doc.assets/cpptools_config.png)
 
-```json
-{
-    "configurations": [
-        {
-            "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "D:\\Softwares\\Visual Studio\\VC\\Tools\\MSVC\\**",
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "compileCommands": ".vscode/compile_commands.json",
-            "intelliSenseMode": "windows-msvc-x64",
-            "cppStandard": "c++20"
-        }
-    ],
-    "version": 4
-}
-```
+    然后调整其中的**C++标准**到**c++20**，和高级设置中的**配置命令**到`.vscode/compile_commands.json`。
 
-如果你使用的是clangd插件，那么你需要在vscode的设置中搜索clangd，并在Arguments选项中添加`--compile-commands-dir=.vscode`。
+    ![Cpptools Config Cpp Standard](doc.assets/cpptools_config_cppstd.png)
+
+    ![Cpptools Config Compile Commands](doc.assets/cpptools_config_compilecmd.png)
 
 
-![Clangd Vscode Setting](doc.assets/clangd_vscode_argument.png)
+- 如果你使用的是clangd插件，那么你需要在vscode的设置中搜索clangd，并在Arguments选项中添加`--compile-commands-dir=.vscode`。
+
+    ![Clangd Vscode Setting](doc.assets/clangd_vscode_argument.png)
 
 之后，就可以正常进行代码提示了。每次保存`xmake.lua`都会自动重新生成`compile_commands.json`，代码的某些提示也可以相应改变。
 
