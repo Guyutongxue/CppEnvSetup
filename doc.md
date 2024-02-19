@@ -34,12 +34,13 @@ Clion是一款收费软件，但提供了教育免费版，所以可以使用学
 
   > 我们这门课不需要虚拟机，即所在操作系统和目标操作系统一致，因此以上虚拟环境暂时不属于我们的讨论范围。
 
-按照我们的说法，你可以进行任意组合，例如：
+按照我们的说法，你可以根据你的需要进行任意组合，例如：
 
-+ 仅使用Visual Studio。
-+ 安装VS，并安装VSCode，从而可以在VSCode上使用msvc，哪个方便使用哪个（毕竟有时VS还是太笨重）。
-+ 安装MinGW+VSCode，从而在VSCode上使用gcc。
-+ 想换一个目标操作系统，那么可以使用WSL+VSCode或者docker+VSCode，在虚拟环境上安装gcc工具链，并在VSCode上安装相关插件即可。
++ 仅使用Visual Studio（开箱即用，功能强大，但较笨重）。
++ 使用CLion，并使用CLion的内置MinGW环境（开箱即用，功能强大，教育免费，使用gcc编译器）。
++ 安装VS，并安装VSCode，从而可以在VSCode上使用msvc（轻量，快速，提供够用的功能）。
++ 安装MinGW+VSCode，从而在VSCode上使用gcc（适合体验msvc之外的编辑器，且gcc更为通用）。
++ 想换一个目标操作系统，那么可以使用WSL+VSCode（集成度好，开箱即用）或者docker+VSCode，在虚拟环境上安装gcc工具链，并在VSCode上安装相关插件即可。
 + 想使用更强大的虚拟机，可以安装Virtual Box等，在上面直接安装VSCode，仿佛在Linux上开发，此时你不应该再参考Windows环境安装。
 + ...
 
