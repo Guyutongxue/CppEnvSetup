@@ -122,11 +122,17 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 + 如果你的工作要求使用全开源工具链（<del>或者你痛恨微软作恶太多，包括对msvc编译器不开源</del>），MinGW和gcc都是开源的；
 + ...
 
-目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
+目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。
+特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
 
 - 清华镜像：[https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64)
 - 科大镜像：[https://mirrors.ustc.edu.cn/msys2/distrib](https://mirrors.ustc.edu.cn/msys2/distrib/)
 - github镜像：[https://hub.nuaa.cf/msys2/msys2-installer/releases](https://hub.nuaa.cf/msys2/msys2-installer/releases)
+
+如果你完全遵照官网的教程进行了安装，那么你应该已经安装了`mingw-w64-ucrt-x86_64-gcc`软件包。
+如果你没有在安装过程中修改MSYS2的安装位置，那么gcc编译器应该被安装到了`C:\msys64\ucrt64\bin\gcc.exe`，g++应该被安装到了`C:\msys64\ucrt64\bin\g++.exe`。（如果你修改了安装位置，那么请将`C:\msys64`替换为你修改后的位置。
+
+请记住这个位置，在之后的vscode的配置过程中，你可能会用到这个路径。
 
 ### MacOS: Homebrew
 
@@ -260,11 +266,7 @@ target("a") -- 可执行文件的名字
 
 - 「Windows」如果使用MSVC编译器（不推荐），则在.vscode文件夹中新建tasks.json中填写以下内容：
 
-    > 注意，`command`是编译器的存储位置，应该换为你自己的路径；特别地，如果你的Visual Studio装在了C盘，那么路径应该是`C:/Program Files (x86)/Microsoft Visual Studio/版本（例如2022）/Community/VC/Tools/MSVC/版本（例如14.38.33130）/bin/Hostx64/x64/cl.exe`。
-    >
-    > 参数(args)是编译器的参数。
-    >
-    > 这本质上就是在指定命令行参数，因此你需要在x64 native terminal中`cd 工作目录`，再用`code .`来用VSCode打开文件夹，来使msvc正常工作。
+    > 这本质上就是在指定命令行参数，因此你需要在x64 native terminal（参见前文Visual Studio安装流程）中`cd 工作目录`，再用`code .`来用VSCode打开文件夹，来使msvc正常工作。
     >
     > 每次使用vscode都需要这样打开，过于麻烦，这是不推荐在vscode中配合msvc使用的原因。
 
@@ -356,7 +358,9 @@ target("a") -- 可执行文件的名字
             {
                 "type": "shell",
                 "label": "C/C++: c++ build active file",
-                "command": "g++", // 你的g++或clang++路径
+                // 你的g++或clang++路径
+                // 如果你使用的是由MSYS2安装的GCC，那么路径可能是C:\msys64\ucrt64\bin\g++.exe
+                "command": "g++",
                 "args": [
                     "-fdiagnostics-color=always",
                     "-Wall",
