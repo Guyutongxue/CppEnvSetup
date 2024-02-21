@@ -25,8 +25,9 @@
 ## 主流编译器介绍
 
 - MSVC（Microsoft Visual C++）是微软提供的C和C++编译器，作为Visual Studio集成开发环境的一部分。
+  
   MSVC专为Windows平台设计，提供了丰富的库和工具，以及与Windows操作系统和其他微软技术的紧密集成。
-
+  
 - GCC（GNU Compiler Collection）是一个免费、开源的编译器，支持多种编程语言，如C、C++、Objective-C、Fortran、Ada等。GCC也支持多种平台，包括Linux、macOS和Windows（通过MinGW）。
 
   GCC是GNU项目的核心组件，广泛应用于Unix和类Unix平台（如Linux）。
@@ -49,17 +50,15 @@
 
 - **VSCode**：这是一个由Microsoft公司开发的功能强大的编辑器，自身不提供编译环境和各种开发工具，但可以通过插件等方式，调用其他的编译环境和开发环境。
 
-  将VSCode与GCC、MSVC等编辑器配合，即可打造强大的开发环境。
+  将VSCode与GCC、MSVC等编译器配合，即可打造强大的开发环境。
 
   > 还有很多其他的编辑器，例如Sublime等，这里就不介绍了。
 
 ### Windows平台开发环境
 
-- **Visual Studio**：这是一款由Microsoft公司开发的IDE，简称**VS**，其C/C++功能只在Windows平台上提供。
-  Visual Studio提供了名为**msvc**的编译器，并集成了编辑器环境和各种相关的功能强大的开发工具；
-  VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
-
-  > 虽然VS也支持MacOS系统，但其不支持在MacOS系统上进行C/C++开发，所以我们将其归类到Windows平台开发环境。
+- **Visual Studio**：这是一款由Microsoft公司开发的IDE，简称**VS**，其C/C++功能只在Windows平台上提供。Visual Studio for Mac已经停止维护，**请不要在非Windows平台使用Visual Studio**。
+  
+  Visual Studio提供了名为**msvc**的编译器，并集成了编辑器环境和各种相关的功能强大的开发工具；VS的目标操作系统为Windows，但是通过虚拟环境或者服务器，也支持Linux目标操作系统。
 
 ### MacOS平台开发环境
 
@@ -130,23 +129,21 @@ MinGW，全称Minimal GNU for Windows，用于在Windows上使用gcc工具链。
 - 如果你的工作要求使用全开源工具链（<del>或者你痛恨微软作恶太多，包括对msvc编译器不开源</del>），MinGW和gcc都是开源的；
 - ...
 
-目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。
-特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
+目前MinGW本体已经停止维护，所以一般使用在它之上的分支MinGW-w64。开发者一般下载集成MinGW-w64的工具链，我们比较建议大家使用MSYS2；请参考[MSYS2官网](https://www.msys2.org/)进行安装。特别地，如果由于网络原因无法下载installer，可以使用以下镜像（请下载其中的那个纯`.exe`文件）：
 
 - 清华镜像：[https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64](https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64)
 - 科大镜像：[https://mirrors.ustc.edu.cn/msys2/distrib](https://mirrors.ustc.edu.cn/msys2/distrib/)
 - github镜像：[https://hub.nuaa.cf/msys2/msys2-installer/releases](https://hub.nuaa.cf/msys2/msys2-installer/releases)
 
 如果你完全遵照官网的教程进行了安装，那么你应该已经安装了`mingw-w64-ucrt-x86_64-gcc`软件包。
-如果你没有在安装过程中修改MSYS2的安装位置，那么gcc编译器应该被安装到了`C:\msys64\ucrt64\bin\gcc.exe`，g++应该被安装到了`C:\msys64\ucrt64\bin\g++.exe`。（如果你修改了安装位置，那么请将`C:\msys64`替换为你修改后的位置。
+
+如果你没有在安装过程中修改MSYS2的安装位置，那么gcc编译器应该被安装到了`C:\msys64\ucrt64\bin\gcc.exe`，g++应该被安装到了`C:\msys64\ucrt64\bin\g++.exe`。如果你修改了安装位置，那么请将`C:\msys64`替换为你修改后的位置。
 
 请记住这个位置，在之后的vscode的配置过程中，你可能会用到这个路径。
 
 ## MacOS: homebrew
 
-如果你已经使用`xcode-select`安装过开发工具包，那么你可能会发现你可以在命令行中运行`gcc`命令。
-但是，这并是不是真正的gcc，这只是Apple给它的Apple Clang编译器加的一个别名。
-想要使用真正的GCC工具链，你可以通过[homebrew](https://brew.sh/)来安装。
+如果你已经使用`xcode-select`安装过开发工具包，那么你可能会发现你可以在命令行中运行`gcc`命令。但是，这并是不是真正的gcc，这只是Apple给它的Apple Clang编译器加的一个别名。想要使用真正的GCC工具链，你可以通过[homebrew](https://brew.sh/)来安装。
 
 安装homebrew，只需要在终端中运行以下命令：
 
@@ -222,14 +219,13 @@ xcode-select --install
 
    clangd是LLVM项目团队开发的跨编辑器的提供C/C++的代码提示、实时代码分析等功能的软件，其运行速度**远快于**由Microsoft开发的C/C++ Extension(下称cpptools)。但clangd不提供调试功能，所以调试功能需要使用其他插件实现。
 
-   可以使用cpptools并关闭其智能提示功能来让其单纯作为调试工具；也可以使用codelldb插件。
-   lldb是LLVM项目中的调试器，与gdb的特性有区别。在vscode中，codelldb提供的特性比cpptools更加方便，因此推荐使用codelldb。
-
-   直接在vscode商店中下载这两个插件即可使用。安装好之后插件会自动下载所需要的二进制包，期间可能会遇到网络问题，可以通过使用网络代理等方式解决。
-
-   ![Clangd Plugin](doc.assets/clangd_plugin.png)
-
-   ![CodeLLDB Plugin](doc.assets/codelldb_plugin.png)
+   可以使用cpptools并关闭其智能提示功能来让其单纯作为调试工具；也可以使用codelldb插件。lldb是LLVM项目中的调试器，与gdb的特性有区别。在vscode中，codelldb提供的特性比cpptools更加方便，因此推荐使用codelldb。
+   
+直接在vscode商店中下载这两个插件即可使用。安装好之后插件会自动下载所需要的二进制包，期间可能会遇到网络问题，可以通过使用网络代理等方式解决。
+   
+![Clangd Plugin](doc.assets/clangd_plugin.png)
+   
+![CodeLLDB Plugin](doc.assets/codelldb_plugin.png)
 
 同时：我们比较建议使用CMake或者XMake这种构建工具来组织代码，进行各种配置比较方便。如果你想使用无构建工具辅助的组织形式，我们也在最后给了一个例子。
 
@@ -241,7 +237,7 @@ xcode-select --install
 
 ### CMake
 
-我们建议安装CMake和CMake Tools两个插件，并同时安装CMake本身。如果你已经安装了Visual Studio，它在`VS路径\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin`中就已经安装了CMake软件（不过微软可能进行了一些改造）；除此之外，你也可以自己在[CMake官网](https://cmake.org/download/)安装标准的CMake，在相应的路径就可以找到。
+我们建议安装CMake和CMake Tools两个插件，并同时安装CMake本身。如果你已经安装了Visual Studio，它在`VS路径\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin`中就已经安装了CMake软件（不过微软可能进行了一些改造）；除此之外，你也可以自己在[CMake官网](https://cmake.org/download/)安装标准的CMake，在你的安装路径就可以找到。
 
 随后，你有两种选择：
 
@@ -249,7 +245,7 @@ xcode-select --install
 
   > 请关闭VSCode，随后重新打开以使新的环境变量在VSCode中生效。
 
-- 改变cmake-tools插件中的设置（插件右下角的齿轮），把CMake path（搜索path就能找到）改为该路径。
+- 或者：你可以改变cmake-tools插件中的设置（插件右下角的齿轮），把CMake path（搜索path就能找到）改为该路径。
 
 然后在文件夹中创建`CMakeLists.txt`，如下：
 
@@ -285,7 +281,7 @@ target("a") -- 可执行文件的名字
     add_files("a.cpp") -- 用于构建的代码文件
 ```
 
-然后保存，就会在`.vscode`下自动生成`compile_commands.json`文件。这个文件生成与否不会影响构建，只会影响代码补全等功能。在下面任务栏就可以选择构建选项，`release`可以换为`debug`，`toolchain`可以换为mingw（Windows在装了VS的情况下默认为msvc），其余符号与CMake插件一致。
+然后保存，就会在`.vscode`下自动生成`compile_commands.json`文件。这个文件生成与否不会影响构建，只会影响代码补全等功能。在下面任务栏就可以选择构建选项，`release`可以换为`debug`，`toolchain`可以换为其他需要的工具链（例如，Windows在装了VS的情况下默认为msvc，可以换为mingw），其余符号与CMake插件一致。
 
 随后，为了能让代码补全正确发挥作用，你需要调整一些插件的设置。
 
@@ -307,9 +303,9 @@ target("a") -- 可执行文件的名字
 
 > 第一次在空文件夹下创建`xmake.lua`时，如果没有自动生成`compile_commands.json`，可以重启VSCode再保存。
 >
-> 若重新保存未重新生成，可以清空`compile_commands.json`后重试。如果仍未成功，可以添加`add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})`。
+> 若重新保存未重新生成，可以清空`compile_commands.json`后重试。如果仍未成功，可以添加`add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})`，再重新构建程序。
 >
-> 如果cpptools还提示有系统头文件找不到的问题，可以把标准库路径也加入到`compile_commands.json`的`includePath`中，例如MSVC就写`VS安装位置\\VC\\Tools\\MSVC\\**`；等等。
+> 对于msvc，如果cpptools还提示有系统头文件找不到的问题，可以把标准库路径也加入到`compile_commands.json`的`includePath`中，即`VS安装位置\\VC\\Tools\\MSVC\\**`。
 
 ### 无构建工具（Microsoft C/C++ 插件）
 
@@ -320,7 +316,7 @@ target("a") -- 可执行文件的名字
 
   > 这本质上就是在指定命令行参数，因此你需要在x64 native terminal（参见前文Visual Studio安装流程）中`cd 工作目录`，再用`code .`来用VSCode打开文件夹，来使msvc正常工作。
   >
-  > 每次使用vscode都需要这样打开，过于麻烦，这是不推荐在vscode中配合msvc使用的原因。
+  > 每次使用vscode都需要这样打开，过于麻烦，所以不推荐vscode在无构建工具使用msvc。
 
   ```json
   {
@@ -359,7 +355,7 @@ target("a") -- 可执行文件的名字
   }
   ```
 
-  然后在.vscode文件夹中创建launch.json文件并加入以下内容
+  然后在.vscode文件夹中创建launch.json文件并加入以下内容（你可以把`//`表示的注释去掉）：
 
   ```json
   {
