@@ -358,34 +358,34 @@ target("a") -- 可执行文件的名字
   然后在.vscode文件夹中创建launch.json文件并加入以下内容（你可以把`//`表示的注释去掉）：
 
   ```json
-  {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "C/C++: cl.exe generate and debug active file",
-        // type 告诉vscode编译器任务的类型
-        // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
-        "type": "cppvsdbg",
-        "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
-        // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
-        // 程序的位置自定义修改，等会参照后面的tasks.json内容
-        //程序所在路径和程序名
-        "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
-        //这里填命令行参数（main函数的形参）
-        "args": [],
-        //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
-        "stopAtEntry": false,
-        //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
-        "cwd": "${fileDirname}",
-        //临时手动添加环境变量；
-        "environment": [],
-        //如果需要输入东西，最好修改为true使用外部控制台（在运行时额外打开终端）。否则用vscode内置的控制台不能输入东西（不是内联控制台，内联控制台和外部控制台其实是一样的，但是这里调试的时候没有内联控制台这个选项）
-        "externalConsole": false,
-        //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
-        "preLaunchTask": "C/C++: cl.exe build active file"
-      }
-    ]
-  }
+    {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "name": "C/C++: cl.exe generate and debug active file",
+          // type 告诉vscode编译器任务的类型
+          // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
+          "type": "cppvsdbg",
+          "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
+          // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
+          // 程序的位置自定义修改，等会参照后面的tasks.json内容
+          //程序所在路径和程序名
+          "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+          //这里填命令行参数（main函数的形参）
+          "args": [],
+          //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
+          "stopAtEntry": false,
+          //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
+          "cwd": "${fileDirname}",
+          //临时手动添加环境变量；
+          "environment": [],
+          //使用内置终端运行程序，支持输入
+          "console": "integratedTerminal",
+          //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
+          "preLaunchTask": "C/C++: cl.exe build active file"
+        }
+      ]
+    }
   ```
 
 - 「跨平台」如果你使用GCC/Clang，可以在.vscode文件夹中添加tasks.json文件并添加以下内容，然后根据需要修改其中的command路径：
