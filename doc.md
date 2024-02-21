@@ -180,7 +180,7 @@ ln -s g++-13 g++
 ln -s gcc-13 gcc
 ```
 
-## Clang
+## Clang（跨平台）
 
 ### Windows
 
@@ -289,7 +289,7 @@ target("a") -- 可执行文件的名字
 
 随后，为了能让代码补全正确发挥作用，你需要调整一些插件的设置。
 
-- 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
+- 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`（Mac下为`command-shift-p`）打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
 
   ![Cpptools Config](doc.assets/cpptools_config.png)
 
@@ -465,7 +465,7 @@ target("a") -- 可执行文件的名字
   ```
 
 最后，需要配置Microsoft C/C++ Extension使其支持c++20：
-使用`ctrl-shift-p`打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
+使用`ctrl-shift-p`（Mac下为`command-shift-p`）打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
 
 ![Cpptools Config](doc.assets/cpptools_config.png)
 
@@ -557,7 +557,7 @@ target("a") -- 可执行文件的名字
 }
 ```
 
-之后使用F5即可编译并调试文件，。
+之后使用F5即可编译并调试文件。
 
 ## CLion（跨平台）
 
@@ -630,7 +630,7 @@ CLion使用CMake来管理项目，所以你可以在CMakeLists.txt中修改相�
 
 ### 基本使用
 
-创建好项目后会自动打开，点击右上角的按钮或者使用快捷键`Command+R`即可编译并运行程序。
+创建好项目后会自动打开，点击右上角的按钮或者使用快捷键`command-R`即可编译并运行程序。
 在页面下方，点击打开输出窗口的按钮（图中箭头指示处）即可看到程序的输出。
 
 ![XCode Run](doc.assets/xcode_run.png)
