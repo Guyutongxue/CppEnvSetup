@@ -59,7 +59,8 @@
 
 ### MacOS平台开发环境
 
-- **XCode**：TODO
+- **XCode**：XCode是Apple公司开发的专门用于Apple旗下各种操作系统下的软件开发的IDE。
+  也可以用来进行C/C++开发，提供了C/C++的编译器以及各种开发工具。
 
 ### 如何选择开发环境？
 
@@ -159,7 +160,7 @@ brew install gcc
 
 你也可以将`gcc`修改成`gcc-13`的别名，以方便使用：
 
-- 如果你的Mac电脑是使用M系列的arm芯片（较新的Mac电脑）
+- 如果你的Mac电脑是使用M系列的arm芯片（较新的Mac电脑），然后重启终端即可
 
 ```bash
 cd /opt/homebrew/bin
@@ -167,7 +168,7 @@ ln -s g++-13 g++
 ln -s gcc-13 gcc
 ```
 
-- 如果你的Mac电脑是使用较老的Intel芯片
+- 如果你的Mac电脑是使用较老的Intel芯片，然后重启终端即可
 
 ```bash
 cd /usr/local/bin
@@ -554,7 +555,7 @@ target("a") -- 可执行文件的名字
 
 之后使用F5即可编译并调试文件，。
 
-## CLion
+## CLion（跨平台）
 
 ### 申请教育免费账号
 
@@ -598,3 +599,38 @@ C++语言标准选择**c++20**即可。
 CLion使用CMake来管理项目，所以你可以在CMakeLists.txt中修改相应配置来管理项目。
 
 ![CLion Main](doc.assets/clion_main.png)
+
+## XCode (MacOS)
+
+### 安装
+
+直接在App Store中搜索XCode并安装即可。
+
+第一次打开XCode，会弹出选择安装开发套件的窗口，我们保持默认的选择（macOS）即可。
+
+![XCode Startup](doc.assets/xcode_startup.png)
+
+### 创建C++项目
+
+打开XCode之后，会弹出XCode的主页，选择**Create New Project**即可开始创建工程。
+
+![XCode Home](doc.assets/xcode_home.png)
+
+在下一个页面，在**MacOS**分类中选择**Command Line Tool**然后确定。
+
+![XCode Select](doc.assets/xcode_select.png)
+
+在下一个页面中，依次填写**Product Name**、**Organization Identifier**，**在Language栏选择C++**，确认之后选择一个保存的路径即可。
+
+![XCode Create Project](doc.assets/xcode_create_project.png)
+
+### 基本使用
+
+创建好项目后会自动打开，点击右上角的按钮或者使用快捷键`Command+R`即可编译并运行程序。
+在页面下方，点击打开输出窗口的按钮（图中箭头指示处）即可看到程序的输出。
+
+![XCode Run](doc.assets/xcode_run.png)
+
+我们的课程要求的是C++20标准，XCode默认创建的项目已经设置为了该标准，你也可以通过下图中步骤修改。
+
+![XCode C++ Standard](doc.assets/xcode_cpp_std.png)
