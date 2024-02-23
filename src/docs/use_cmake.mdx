@@ -53,7 +53,7 @@ import { Show } from "../components/Show";
 
 <Show when="gcc">
 
-[MinGW-W64-binaries](https://github.com/niXman/mingw-builds-binaries/) 仓库提供了 MinGW-W64 的预编译版本，你可以在 releases 界面下载到编译好的 MinGW-W64 包。直接点击[此链接](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z)下载，或者使用[网盘链接](https://api.guyutongxue.site/vscch/mingw)。
+你将使用 Windows 下的 **GCC 编译器**，即 **MinGW**。[MinGW-W64-binaries](https://github.com/niXman/mingw-builds-binaries/) 仓库提供了 MinGW-W64 的预编译版本，你可以在 releases 界面下载到编译好的 MinGW-W64 包。直接点击[此链接](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z)下载，或者使用[网盘链接](https://api.guyutongxue.site/vscch/mingw)。
 
 下载好之后会得到一个压缩包，请将压缩包解压到一个你喜欢的位置（路径中请不要包括中文字符等非 ASCII 字符，以免引发不必要的异常）。然后，打开刚刚解压好的文件夹，进入其中的 `bin` 子目录，复制这个目录的路径（形如`X:\xxx\xxx\mingw64\bin`）。
 
@@ -95,7 +95,7 @@ import { Show } from "../components/Show";
 
 <Show when="gcc_ok">
 
-你将使用 GNU 项目下的 **GCC 编译器**。
+你将使用 GNU 项目下的 **GCC 编译器**（即 **MinGW**）。
 
 <Fixed name="compiler" value="gcc" />
 
@@ -392,10 +392,21 @@ Visual Studio Code，简称 VSCode，是一个由微软公司开发的功能强�
 
 ![](./assets/VSCode-CMake.png)
 
-这时下方的状态栏就会出现 CMake 相关的图标，点击"Kit"的选项选择工具链；如果你已经安装了 Visual Studio，选择`-amd64`那个即可使用`msvc`；如果你想使用 MinGW，请选择 MinGW 的那个选项。
+这时下方的状态栏就会出现 CMake 相关的图标，点击"Kit"的选项选择工具链。<Show when="msvc"> 请选择带有 `-amd64` 的选项以使用 MSVC 编译器。</Show> <Show when="windows, gcc"> 请选择带 MinGW 的选项以使用 GCC 编译器。</Show>
 
+<Show when="msvc">
+
+{/* */}
 > - 在以前的版本中，使用 VS 的 toolkit 可能需要使用管理员模式启动 VSCode 来成功构建；助教在最新版的 VSCode 和 VS2022 中未发现此问题。
+
+</Show>
+
+<Show when="windows, gcc">
+
+{/* */}
 > - MinGW 可能不支持非 ASCII 码路径（即不支持中文路径）。
+
+</Show>
 
 随后就可以点击齿轮进行编译，点击 `▶` 符号进行运行，虫子的符号进行 debug。你可以把 `Debug` 换为 `Release` 得到优化版本。如果你需要更多的可执行程序，就再加其他的 `add_executable` 即可。
 
