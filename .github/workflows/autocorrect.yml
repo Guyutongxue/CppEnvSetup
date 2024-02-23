@@ -1,0 +1,11 @@
+name: Autocorrect
+on: [push]
+jobs:
+  Autocorrect-Actions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check source code
+      uses: actions/checkout@v4
+
+    - name: AutoCorrect
+      uses: huacnlee/autocorrect-action@main
