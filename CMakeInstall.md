@@ -10,24 +10,11 @@
 
 在Windows下，一般有两种主流的编译器选项：由Microsoft公司开发的MSVC编译器和GNU计划下的GCC编译器。
 
-其中，MSVC编译器跟随着Visual Studio发行，可以通过Visual Studio Installer安装。
-MSVC编译器是Windows操作系统的首选编译器，对Windows操作系统的各项功能和API支持最好。
-但是，其体积庞大，占用空间较多，且与Visual Studio强制绑定。
-
-如果你喜欢以一种更轻量的形式安装编译器，那么可以使用GCC编译器。
-在Windows平台下，GCC编译器由MinGW项目提供。
+其中，MSVC编译器跟随着微软的生成工具一同发行。MSVC编译器是Windows操作系统的首选编译器，对Windows操作系统的各项功能和API支持最好。
 
 #### MSVC编译器
 
-请在[Visual Studio官网](https://visualstudio.microsoft.com/)下载VS社区版，在安装时勾选“**使用C++的桌面开发**”，并且确保右边的“**用于 Windows 的 C++ CMake 工具**”已被勾选。
-
-如果你已经下载了，可以随时在Visual Studio Installer中进行更新（在下面任务栏中搜索即可）。
-
-![Visual Studio Installation](doc.assets/vs_install.png)
-
-> 如果VS的更新非常慢，与正常网速严重不匹配，可以在[download.visualstudio.microsoft.com - dns查询--站长工具 (chinaz.com)](https://tool.chinaz.com/dns/download.visualstudio.microsoft.com)中找到TTL值最小的IP地址，并在`C:\Windows\System32\drivers\etc`中的`hosts`文件（请用管理员模式打开）的最后一行加上`在网站中找到的地址 download.visualstudio.microsoft.com`即可。
-
-之后，MSVC编译器就会随同Visual Studio被一起安装。
+如果你安装了Visual Studio这个IDE，那么msvc会自动跟随下载，无需进行额外步骤；如果你不想使用Visual Studio，但同时还想使用微软的生成工具，你可以在[Microsoft C++ 生成工具 - Visual Studio](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)处点击”下载生成工具“来下载。
 
 #### GCC编译器
 
@@ -102,9 +89,7 @@ CMake是一个跨平台的开源构建系统，它采用了一种与平台无关
 
 [CMake 下载地址](https://cmake.org/download/#latest)
 
-下载完成直接，直接运行安装包安装即可。
-
-但值得注意的是，安装过程中请选择“**Add CMake to system PATH for all users**”，这十分重要！
+下载完成直接运行安装包安装即可。但值得注意的是，安装过程中请选择“**Add CMake to system PATH for all users**”，这十分重要！
 
 ![CMake Add Path](doc.assets/cmake_add_path.png)
 
@@ -165,15 +150,15 @@ cmake --version
   ```cmake
   # 指定此项目所需的cmake的最低版本
   cmake_minimum_required(VERSION 3.10)
-
+  
   # 项目名称
   project(HelloWorld)
-
+  
   # 设置C++标准
   set(CMAKE_CXX_STANDARD 20)
   # 设置C++标准是否必须
   set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+  
   # 添加可执行文件
   # add_executable(可执行文件名 源文件列表)
   add_executable(HelloWorld main.cpp)
