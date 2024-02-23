@@ -139,9 +139,8 @@ cmake --version
   #include <iostream>
   #include <format>
 
-  int main(){
-    std::cout << std::format("Hello, {}!", "World") << std::endl;
-    return 0;
+  int main() {
+    std::cout << std::format("Hello, {}!\n", "World");
   }
   ```
 
@@ -154,47 +153,45 @@ cmake --version
   # 项目名称
   project(HelloWorld)
   
-  # 设置C++标准
-  set(CMAKE_CXX_STANDARD 20)
-  # 设置C++标准是否必须
-  set(CMAKE_CXX_STANDARD_REQUIRED True)
-  
-  # 添加可执行文件
+  # 添加一个可执行文件目标
   # add_executable(可执行文件名 源文件列表)
   add_executable(HelloWorld main.cpp)
+
+  # 设置此目标的 C++ 标准
+  set_target_properties(
+    HelloWorld
+    PROPERTIES CXX_STANDARD          20
+               CXX_STANDARD_REQUIRED ON)
   ```
 
 然后打开终端，定位到该文件夹，运行以下命令编译程序，以下命令对Windows（包括Powershell和CMD）、MacOS、Linux均通用。
 
 ```bash
 mkdir build
-cd build
-cmake ..
-cmake --build .
+cmake -B build
+cmake --build build
 ```
 
 - 第一行命令为创建一个命为`build`的文件夹，之后步骤中的CMake临时文件、生成的二进制文件都会存放在这里。
 
-- 第二行命令为定位到`build`文件夹，我们将要在这个文件夹里面之后后续的操作。
+- 第二行命令为在 `build` 中生成CMake临时文件，运行这个命令的时候，CMake会自动探测当前的编译器环境，并生成对应的构建命令。
 
-- 第三行命令为生成CMake临时文件，运行这个命令的时候，CMake会自动探测当前的编译器环境，并生成对应的构建命令。
+  如果你是 Windows 用户，且之前决定使用 MinGW 编译器，需改用 `cmake -B build -G "MinGW Makefiles"`。
 
-  `cmake`命令需要接受一个包含有CMakeLists.txt的路径作为参数，`..`代表指向上一级目录。在这个例子中，我们处在`build`文件夹中，上一级目录存放有我们刚刚新建的CMakeLists.txt。
+- 第三行为编译程序。
 
-- 第四行为编译程序。
-
-  `cmake --build`命令需要接受一个包含有CMake临时文件的文件夹作为参数，`.`代表指向当前路径。在当前的例子中，当前目录为`build`文件夹，即为存放CMake临时文件的目录。
+  `cmake --build`命令需要接受一个包含有CMake临时文件的文件夹作为参数，我们指定为`build`文件夹，即为存放CMake临时文件的目录。
 
 之后，我们可以运行刚刚编译好的程序。
 
 - 如果你是MacOS、Linux系统，或者在Windows系统下使用GCC编译器，那么程序将会被生成到`build`文件夹的根目录中。（因为都是使用的make或者ninja生成器）
 
-  直接运行`./HelloWorld`（MacOS和Linux）或者`.\HelloWorld.exe`（Windows）即可看到输出。
+  直接运行`./build/HelloWorld`（MacOS和Linux）或者`.\build\HelloWorld.exe`（Windows）即可看到输出。
 
   ![CMake Hello World Output](doc.assets/cmake_helloworld_output1.png)
 
 - 如果你是使用Windows系统下的MSVC编译器，那么程序被存放的路径将会复杂一点，你可以在`build`文件夹下的`Debug`目录中找到生成的程序。
 
-  运行`.\Debug\HelloWorld.exe`即可看到输出。
+  运行`.\build\Debug\HelloWorld.exe`即可看到输出。
 
   ![CMake Hello World Output](doc.assets/cmake_helloworld_output2.png)
