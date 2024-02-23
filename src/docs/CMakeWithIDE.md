@@ -10,7 +10,7 @@ CMake作为一个广泛使用的构建工具，被各种IDE非常好地支持，
 
 如果你已经下载了，可以随时在Visual Studio Installer中进行更新（在下面任务栏中搜索即可）。
 
-![Visual Studio Installation](doc.assets/vs_install.png)
+![Visual Studio Installation](/assets/vs_install.png)
 
 > 如果VS的更新非常慢，与正常网速严重不匹配，可以在[download.visualstudio.microsoft.com - dns查询--站长工具 (chinaz.com)](https://tool.chinaz.com/dns/download.visualstudio.microsoft.com)中找到TTL值最小的IP地址，并在`C:\Windows\System32\drivers\etc`中的`hosts`文件（请用管理员模式打开）的最后一行加上`在网站中找到的地址 download.visualstudio.microsoft.com`即可。
 
@@ -22,7 +22,7 @@ CMake作为一个广泛使用的构建工具，被各种IDE非常好地支持，
 
 你也可以像创建空项目一样，用Visual Studio创建一个CMake工程：
 
-![](doc.assets/windows-1.png)
+![](/assets/windows-1.png)
 
 点击“CMake项目”即可，VS已经生成了一个较为复杂的CMake模板，暂时只需要改动或增加`add_executable`的部分即可。
 
@@ -36,13 +36,13 @@ CMake作为一个广泛使用的构建工具，被各种IDE非常好地支持，
 
 CLion默认使用的管理工具就是CMake，所以点击“New Project”，把语言标准调整为`C++20`即可。
 
-![CLion New Project](doc.assets/clion_new_project.png)
+![CLion New Project](/assets/clion_new_project.png)
 
 ## VSCode
 
 VSCode本身只是编辑器，因此建议安装Microsoft C/C++来提供基本的C/C++代码补全及相关功能，并安装CMake和CMake Tools两个插件以获得CMake的良好支持。注意把CMake Tools插件中的设置中的“status bar visibility"改为"compact"，如下：
 
-![](doc.assets/VSCode-CMake.png)
+![](/assets/VSCode-CMake.png)
 
 这时下方的状态栏就会出现CMake相关的图标，点击"Kit"的选项选择工具链；如果你已经安装了Visual Studio，选择`-amd64`那个即可使用`msvc`；如果你想使用MinGW，请选择MinGW的那个选项。
 

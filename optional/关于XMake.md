@@ -40,17 +40,17 @@ target("a") -- 可执行文件的名字
 
 - 如果你使用的是Microsoft C/C++，使用`ctrl-shift-p`（Mac下为`command-shift-p`）打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`。
 
-  ![Cpptools Config](../doc.assets/cpptools_config.png)
+  ![Cpptools Config](..//assets/cpptools_config.png)
 
   然后调整其中的**C++标准**到**c++20**（即和xmake指定的版本一致的版本），和高级设置中的**配置命令**到`.vscode/compile_commands.json`。
 
-  ![Cpptools Config Cpp Standard](../doc.assets/cpptools_config_cppstd.png)
+  ![Cpptools Config Cpp Standard](..//assets/cpptools_config_cppstd.png)
 
-  ![Cpptools Config Compile Commands](../doc.assets/cpptools_config_compilecmd.png)
+  ![Cpptools Config Compile Commands](..//assets/cpptools_config_compilecmd.png)
 
 - 如果你使用的是clangd插件，那么你需要在vscode的设置中搜索clangd，并在Arguments选项中添加`--compile-commands-dir=.vscode`。
 
-  ![Clangd Vscode Setting](../doc.assets/clangd_vscode_argument.png)
+  ![Clangd Vscode Setting](..//assets/clangd_vscode_argument.png)
 
 之后，就可以正常进行代码提示了。每次保存`xmake.lua`都会自动重新生成`compile_commands.json`，代码的某些提示也可以相应改变。
 

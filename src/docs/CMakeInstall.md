@@ -34,13 +34,13 @@
 > PATH变量也会被其他很多程序识别并使用。
 
 - 步骤0：按下`Win`键，在Windows的搜索框中搜索**编辑系统环境变量**并进入。
-  ![Windows Edit Path Search](doc.assets/windows_edit_path_search.png)
+  ![Windows Edit Path Search](/assets/windows_edit_path_search.png)
 
 - 步骤1: 点击**环境变量**，进入修改环境变量的界面。
-  ![Windows Edit Path Step 1](doc.assets/windows_edit_path_step1.png)
+  ![Windows Edit Path Step 1](/assets/windows_edit_path_step1.png)
 
 - 步骤2：在**系统变量**中找到名为**PATH**的变量，左键选择它并点击下面的**编辑**按钮。
-  ![Windows Edit Path Step 2](doc.assets/windows_edit_path_step2.png)
+  ![Windows Edit Path Step 2](/assets/windows_edit_path_step2.png)
 
 - 步骤3：点击**新建**按钮，粘贴我们刚才复制的形如`X:\xxx\xxx\mingw64\bin`的目录路径（图中是`D:\Program Files\mingw64\bin`），并**务必**点击**确定**按钮保存，并且，上一个页面（步骤2中页面）也**必须**点击**确定**保存。
 
@@ -52,10 +52,10 @@
   **上一个页面的确定按钮也要点！**
   **上一个页面的确定按钮也要点！**
 
-  ![Windows Edit Path Step 3](doc.assets/windows_edit_path_step3.png)
+  ![Windows Edit Path Step 3](/assets/windows_edit_path_step3.png)
 
 - 步骤4：启动一个新的终端（如果你之前已经启动了终端，请**完全关闭**再重新打开），输入`gcc --version`命令，检查是否成功安装（参考下方图片中的输出）。如果提示*未找到命令*等，你可以尝试重启电脑。
-  ![Windows GCC Version Test](doc.assets/windows_gcc_version_test.png)
+  ![Windows GCC Version Test](/assets/windows_gcc_version_test.png)
 
 ### MacOS
 
@@ -91,11 +91,11 @@ CMake是一个跨平台的开源构建系统，它采用了一种与平台无关
 
 下载完成直接运行安装包安装即可。但值得注意的是，安装过程中请选择“**Add CMake to system PATH for all users**”，这十分重要！
 
-![CMake Add Path](doc.assets/cmake_add_path.png)
+![CMake Add Path](/assets/cmake_add_path.png)
 
 安装成功之后，启动一个新的终端（如果你之前已经打开了终端，请**完全关闭**后再重新启动），运行`cmake --version`以检查是否成功安装。如果报*未找到程序*等错误，可以尝试重启电脑。
 
-![CMake Display Version](doc.assets/cmake_display_version_windows.png)
+![CMake Display Version](/assets/cmake_display_version_windows.png)
 
 ### MacOS
 
@@ -109,11 +109,11 @@ CMake是一个跨平台的开源构建系统，它采用了一种与平台无关
 sudo "/Applications/CMake.app/Contents/bin/cmake-gui" --install
 ```
 
-![CMake MacOS Create Symbol Link](doc.assets/cmake_macos_link.png)
+![CMake MacOS Create Symbol Link](/assets/cmake_macos_link.png)
 
 可以运行`cmake --version`来检查是否安装成功。
 
-![CMake MacOS Display Version](doc.assets/cmake_macos_version.png)
+![CMake MacOS Display Version](/assets/cmake_macos_version.png)
 
 ### Linux (Ubuntu)
 
@@ -191,10 +191,10 @@ cmake --build .
 
   直接运行`./HelloWorld`（MacOS和Linux）或者`.\HelloWorld.exe`（Windows）即可看到输出。
 
-  ![CMake Hello World Output](doc.assets/cmake_helloworld_output1.png)
+  ![CMake Hello World Output](/assets/cmake_helloworld_output1.png)
 
 - 如果你是使用Windows系统下的MSVC编译器，那么程序被存放的路径将会复杂一点，你可以在`build`文件夹下的`Debug`目录中找到生成的程序。
 
   运行`.\Debug\HelloWorld.exe`即可看到输出。
 
-  ![CMake Hello World Output](doc.assets/cmake_helloworld_output2.png)
+  ![CMake Hello World Output](/assets/cmake_helloworld_output2.png)

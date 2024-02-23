@@ -158,15 +158,15 @@
 
 最后，需要配置Microsoft C/C++ Extension；使用`ctrl-shift-p`（Mac下为`command-shift-p`）打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`，并将其中的C++标准改为C++20。
 
-![Cpptools Config](../doc.assets/cpptools_config.png)
+![Cpptools Config](..//assets/cpptools_config.png)
 
-![Cpptools Config C++ Standard](../doc.assets/cpptools_config_cppstd.png)
+![Cpptools Config C++ Standard](..//assets/cpptools_config_cppstd.png)
 
 然后，打开你需要编译运行的文件，然后点击**F5**，就可以编译、运行并调试该程序了。
 
 运行之后会自动打开终端。但有时候会自动跳转到“**调试控制台**”，只需要在vscode页面的下方切换到“**终端**”选项卡，就能看到程序的输出，以及执行输入了。
 
-![Vscode Switch To Console](../doc.assets/vscode_switch_to_console.png)
+![Vscode Switch To Console](..//assets/vscode_switch_to_console.png)
 
 ## 多文件情况（特别不推荐）
 
