@@ -1,6 +1,8 @@
 # 无构建工具使用VSCode
 
-我们课程不推荐无构建工具地使用VSCode，因为配置起来比较麻烦；你可以使用谷雨学长提供的工具来自动配置，也可以使用下面的方式来手动配置。
+我们课程不推荐无构建工具地使用VSCode，因为配置起来比较麻烦。但是，不使用构建工具，意味着不需要每写一个包含`main`函数的源文件，就必须创建一个单独的项目。这也许会给写oj上的作业带来一点方便。
+
+你可以使用[谷雨学长提供的工具](https://vscch.guyutongxue.site/)来自动配置，也可以使用下面的方式来手动配置。
 
 ## 单文件情况
 
@@ -52,34 +54,34 @@
   然后在.vscode文件夹中创建launch.json文件并加入以下内容（你可以把`//`表示的注释去掉）：
 
   ```json
-    {
-      "version": "0.2.0",
-      "configurations": [
-        {
-          "name": "C/C++: cl.exe generate and debug active file",
-          // type 告诉vscode编译器任务的类型
-          // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
-          "type": "cppvsdbg",
-          "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
-          // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
-          // 程序的位置自定义修改，等会参照后面的tasks.json内容
-          //程序所在路径和程序名
-          "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
-          //这里填命令行参数（main函数的形参）
-          "args": [],
-          //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
-          "stopAtEntry": false,
-          //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
-          "cwd": "${fileDirname}",
-          //临时手动添加环境变量；
-          "environment": [],
-          //使用内置终端运行程序，支持输入
-          "console": "integratedTerminal",
-          //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
-          "preLaunchTask": "C/C++: cl.exe build active file"
-        }
-      ]
-    }
+  {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C/C++: cl.exe generate and debug active file",
+        // type 告诉vscode编译器任务的类型
+        // 这个是规定的，不是随便写，比如msvc编译器就是cppvsdbg
+        "type": "cppvsdbg",
+        "request": "launch", //有launch和attach可选，这里填launch，按下F5就可以启动调试了；而不是attach（附加）
+        // program 这个是你的可执行程序位置，这里可以根据自己的tasks.json生成
+        // 程序的位置自定义修改，等会参照后面的tasks.json内容
+        //程序所在路径和程序名
+        "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe",
+        //这里填命令行参数（main函数的形参）
+        "args": [],
+        //为true时，在开始运行程序时，不立刻往后执行，先暂停一下，一般填false；
+        "stopAtEntry": false,
+        //目标工作目录，在哪个目录调试程序，一般在当前文件夹（项目所在文件夹）；
+        "cwd": "${fileDirname}",
+        //临时手动添加环境变量；
+        "environment": [],
+        //使用内置终端运行程序，支持输入
+        "console": "integratedTerminal",
+        //这个表示 执行调试前 要完成的任务 该值需要与tasks.json中的label相同，否则调试时会提示找不到；
+        "preLaunchTask": "C/C++: cl.exe build active file"
+      }
+    ]
+  }
   ```
 
 - 如果你使用GCC/Clang，可以在.vscode文件夹中添加tasks.json文件并添加以下内容，然后根据需要修改其中的command路径：
@@ -156,10 +158,16 @@
 
 最后，需要配置Microsoft C/C++ Extension；使用`ctrl-shift-p`（Mac下为`command-shift-p`）打开vscode命令面板，搜索`c/c++`，进入`C/C++：编辑配置（UI）`，并将其中的C++标准改为C++20。
 
-![](../doc.assets/cpptools_config.png)
+![Cpptools Config](../doc.assets/cpptools_config.png)
 
-![](../doc.assets/cpptools_config_cppstd.png)
+![Cpptools Config C++ Standard](../doc.assets/cpptools_config_cppstd.png)
 
-## 多文件情况
+然后，打开你需要编译运行的文件，然后点击**F5**，就可以编译、运行并调试该程序了。
+
+运行之后会自动打开终端。但有时候会自动跳转到“**调试控制台**”，只需要在vscode页面的下方切换到“**终端**”选项卡，就能看到程序的输出，以及执行输入了。
+
+![Vscode Switch To Console](../doc.assets/vscode_switch_to_console.png)
+
+## 多文件情况（特别不推荐）
 
 如果你需要多个文件共同编译为一个目标，那么`tasks.json`中的`arguments`就不正确了；我们可以注意到最后一个参数是`${file}`，即当前文件；如果我们需要批量的文件，可以改为例如`${fileDirname}/*.cpp`来匹配当前文件夹下所有的cpp共同生成一个文件。
