@@ -67,11 +67,11 @@ import { Show } from "../components/Show";
 > Path 变量也会被其他很多程序识别并使用。
 
 1. 按下 <kbd>Windows</kbd> 键，在 Windows 的搜索框中搜索 **编辑系统环境变量** 并进入（可直接搜索 “path”）。  
-   ![Windows Edit Path Search](/assets/windows_edit_path_search.png)
+   ![Windows Edit Path Search](./assets/windows_edit_path_search.png)
 2. 点击**环境变量**，进入修改环境变量的界面。  
-   ![Windows Edit Path Step 1](/assets/windows_edit_path_step1.png)
+   ![Windows Edit Path Step 1](./assets/windows_edit_path_step1.png)
 3. 在**系统变量**中找到名为 **Path** 的变量，左键选择它并点击下面的**编辑**按钮。  
-   ![Windows Edit Path Step 2](/assets/windows_edit_path_step2.png)
+   ![Windows Edit Path Step 2](./assets/windows_edit_path_step2.png)
 4. 点击**新建**按钮，粘贴我们刚才复制的形如 `X:\xxx\xxx\mingw64\bin` 的目录路径（图中是 `D:\Program Files\mingw64\bin`），并**务必**点击**确定**按钮保存，并且，上一个页面（步骤 2 中页面）也**必须**点击**确定**保存。  
    **必须点击确定按钮！**  
    **必须点击确定按钮！**  
@@ -79,9 +79,9 @@ import { Show } from "../components/Show";
    **上一个页面的确定按钮也要点！**  
    **上一个页面的确定按钮也要点！**  
    **上一个页面的确定按钮也要点！**  
-   ![Windows Edit Path Step 3](/assets/windows_edit_path_step3.png)
+   ![Windows Edit Path Step 3](./assets/windows_edit_path_step3.png)
 5. 按 <kbd>Windows</kbd> 键+<kbd>X</kbd>，启动 **“终端”** 或 **“PowerShell”** （如果你之前已经启动了终端，请**完全关闭**再重新打开），输入 `gcc --version` 命令，检查是否成功安装（参考下方图片中的输出）。如果提示 _无法识别命令_ 等，你可以尝试重启电脑。
-   ![Windows GCC Version Test](/assets/windows_gcc_version_test.png)
+   ![Windows GCC Version Test](./assets/windows_gcc_version_test.png)
 
 </Show>
 
@@ -115,7 +115,7 @@ import { Show } from "../components/Show";
 
 如果你已经下载了，可以随时在 Visual Studio Installer 中进行更新（在下面任务栏中搜索即可）。
 
-![Visual Studio Installation](/assets/vs_install.png)
+![Visual Studio Installation](./assets/vs_install.png)
 
 </Show> {/* install vs guide */}
 
@@ -188,7 +188,7 @@ winget install CMake.CMake
 
 下载完成直接运行安装包安装即可。但值得注意的是，安装过程中请选择 **“Add CMake to system PATH for all users”**，这十分重要！
 
-![CMake Add Path](/assets/cmake_add_path.png)
+![CMake Add Path](./assets/cmake_add_path.png)
 
 </Show>
 
@@ -196,7 +196,7 @@ winget install CMake.CMake
 
 安装成功之后，按 <kbd>Windows</kbd> 键+<kbd>X</kbd>，启动 **“终端”** 或 **“PowerShell”**（如果你之前已经打开了终端，请**完全关闭**后再重新启动），运行 `cmake --version` 以检查是否成功安装。如果报 _无法识别命令_ 等错误，可以尝试重启电脑。
 
-![CMake Display Version](/assets/cmake_display_version_windows.png)
+![CMake Display Version](./assets/cmake_display_version_windows.png)
 
 <Fixed name="cmake" value="1" />
 
@@ -235,7 +235,7 @@ sudo brew install CMake.CMake
 sudo "/Applications/CMake.app/Contents/bin/cmake-gui" --install
 ```
 
-![CMake MacOS Create Symbol Link](/assets/cmake_macos_link.png)
+![CMake MacOS Create Symbol Link](./assets/cmake_macos_link.png)
 
 </Show>
 
@@ -243,7 +243,7 @@ sudo "/Applications/CMake.app/Contents/bin/cmake-gui" --install
 
 可以运行 `cmake --version` 来检查是否安装成功。
 
-![CMake MacOS Display Version](/assets/cmake_macos_version.png)
+![CMake MacOS Display Version](./assets/cmake_macos_version.png)
 
 <Fixed name="cmake" value="1" />
 
@@ -339,13 +339,13 @@ cmake --build build
 
 <Show when="mac | linux | windows, gcc">
 
-![CMake Hello World Output](/assets/cmake_helloworld_output1.png)
+![CMake Hello World Output](./assets/cmake_helloworld_output1.png)
 
 </Show>
 
 <Show when="msvc">
 
-![CMake Hello World Output](/assets/cmake_helloworld_output2.png)
+![CMake Hello World Output](./assets/cmake_helloworld_output2.png)
 
 </Show>
 
@@ -369,7 +369,7 @@ cmake --build build
 
 - 若打开已有 `CMakeLists.txt` 的 CMake 项目，只需启动 VS，点击“打开本地文件夹”，打开含有 CMakeLists.txt 的文件夹即可。
 - 你还可以直接从 VS 创建一个 CMake 项目：  
-  ![](/assets/windows-1.png)
+  ![](./assets/windows-1.png)
   点击“CMake 项目”即可，VS 已经生成了一个较为复杂的 CMake 模板，暂时只需要改动或增加`add_executable`的部分即可。
 
 </Show>
@@ -380,7 +380,7 @@ CLion 是一款由 JetBrains 公司开发的专门用于 C 和 C++ 开发的跨�
 
 - 若打开已有 `CMakeLists.txt` 的 CMake 项目，只需启动 CLion，点击 Open，打开含有 CMakeLists.txt 的文件夹即可。
 - 此外，CLion 默认使用的管理工具就是 CMake，所以点击“New Project”创建工程时就已经包含了 `CMakeLists.txt`。记得语言标准调整为 `C++20`。  
-  ![CLion New Project](/assets/clion_new_project.png)
+  ![CLion New Project](./assets/clion_new_project.png)
 
 </Show>
 
@@ -390,7 +390,7 @@ Visual Studio Code，简称 VSCode，是一个由微软公司开发的功能强�
 
 正由于 VSCode 本身只是编辑器，因此建议安装 Microsoft C/C++ 来提供基本的 C/C++ 代码补全及相关功能，并安装 CMake 和 CMake Tools 两个插件以获得 CMake 的良好支持。注意把 CMake Tools 插件中的设置中的“status bar visibility"改为"compact"，如下：
 
-![](/assets/VSCode-CMake.png)
+![](./assets/VSCode-CMake.png)
 
 这时下方的状态栏就会出现 CMake 相关的图标，点击"Kit"的选项选择工具链；如果你已经安装了 Visual Studio，选择`-amd64`那个即可使用`msvc`；如果你想使用 MinGW，请选择 MinGW 的那个选项。
 
