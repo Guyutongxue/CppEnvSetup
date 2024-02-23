@@ -13,10 +13,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      OPENJUDGE_USERNAME: ${{ secrets.OPENJUDGE_USERNAME }}
-      OPENJUDGE_PASSWORD: ${{ secrets.OPENJUDGE_PASSWORD }}
-      OPENJUDGE_HOST: rjsj.openjudge.cn
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
