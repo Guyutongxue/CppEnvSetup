@@ -135,12 +135,58 @@ import { Show } from "../components/Show";
 
 <Show when="mac">
 
-你将使用苹果官方提供的 **Apple Clang 编译器**，它是 Clang 编译器的修改版。
+{/* 你将使用苹果官方提供的 **Apple Clang 编译器**，它是 Clang 编译器的修改版。
 
 你只需要简单地在 **“终端”** 应用程序中运行以下命令，并且按照指引操作，就可以成功安装。
 
 ```bash
 xcode-select --install
+``` */}
+
+我们将使用Homebrew安装GCC工具链。
+Homebrew是MacOS上的一个社区运营的包管理器，可以用来方便地下载和管理很多软件，尤其是与软件开发的一些软件。
+
+如果你已经使用`xcode-select`安装过开发工具包，那么你可能会发现你可以在命令行中运行`gcc`命令。
+但是，这并是不是真正的gcc，这只是Apple给它的Apple Clang编译器加的一个别名。
+想要使用真正的GCC工具链，你可以通过[homebrew](https://brew.sh/)来安装。
+
+> 为什么我们不推荐使用`xcode-select`安装的Apple Clang编译器？
+> 
+> Apple Clang编译器是Apple公司对Clang编译器的修改品，相比于原版有很多现代c++特性不支持，这并不是我们想要的。
+
+安装Homebrew，只需要在终端中运行以下命令（可能需要比较“良好”的网络环境）：
+
+> 如果你的网络没那么“好”，可以参考[清华大学镜像站Homebrew镜像](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+安装完Homebrew之后，使用以下命令来安装最新版本的GCC编译器：
+
+```bash
+brew install gcc
+```
+
+截止2024年2月，gcc的最新版本为13，所以你可以通过`gcc-13`来调用gcc编译器。
+（如果没有`gcc-13`命令，可能是gcc版本已经更新，可以尝试`gcc-14`等）
+
+你也可以将`gcc`修改成`gcc-13`的别名，以方便使用：
+
+- 如果你的Mac电脑是使用M系列的arm芯片（较新的Mac电脑），运行下述命令，然后重启终端即可
+
+```bash
+cd /opt/homebrew/bin
+ln -s g++-13 g++
+ln -s gcc-13 gcc
+```
+
+- 如果你的Mac电脑是使用较老的Intel芯片，运行下述命令，然后重启终端即可
+
+```bash
+cd /usr/local/bin
+ln -s g++-13 g++
+ln -s gcc-13 gcc
 ```
 
 <Fixed name="compiler" value="apple_clang" />
